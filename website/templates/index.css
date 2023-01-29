@@ -1,0 +1,172 @@
+*{font-family:"Segoe UI",sans-serif}
+
+.whole {
+    margin: 50px 25% 50px 25%;
+}
+
+h1 {
+    font-size: 35px;
+    text-align: center;
+    margin: 50px 0 50px 0;
+}
+
+form {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Montserrat';
+    font-style: normal;
+
+    color: #000000;
+}
+
+section {
+    height: 90%;
+    width: 100%;
+    background-color: alice-blue;
+    display: flex;
+    flex-direction: column; 
+    align-items: center;
+    justify-content: center;
+}
+
+.container {
+    width: 90%;
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 20px;
+    box-shadow: 0px 0px 20px #565656;
+    background-color: white;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.form-group{
+    width: 100%;
+    margin-top: 20px;
+    font-size: 18px;
+}
+
+.form-group select { /* Number of flashcards*/
+    width: 75px;
+    height: 25px;
+    border: 1px solid rgba(128, 128, 128, 0.25);
+    border-radius: 3px;
+}
+
+.form-group textarea { /* Article TEXT */
+    width: 98%;
+    padding: 5px;
+    font-size: 16px;
+    border: 1px solid rgba(128, 128, 128, 0.4);
+    margin-top: 5px;
+}
+
+textarea {
+    resize: none; 
+}
+
+textarea::placeholder { 
+    color: rgba(85, 85, 85, 0.4);
+}
+
+.form-group input { /* Article LINK */
+    width: 98%;
+    padding: 5px;
+    font-size: 16px;
+    border: 1px solid rgba(128, 128, 128, 0.4);
+    margin-top: 5px;
+    margin-bottom: 10px;
+}
+
+input::placeholder { 
+    color: rgba(85, 85, 85, 0.4);
+}
+
+button[type="submit"] {
+    width: 100%;
+    border: none;
+    outline: none;
+    padding: 20px;
+    font-size: 24px;
+    border-radius: 8px;
+    color: rgb(0, 0, 0);
+    text-align: center;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: .3s ease background-color;
+}
+
+button[type="submit"]:hover {
+    background-color: rgba(169, 250, 153, 0.5);   
+}
+
+button[type="submit"]:focus {
+    border: 2px solid rgb(0, 0, 0); 
+}
+
+#status {
+    width: 90%;
+    max-width: 500px;
+    text-align: center;
+    padding: 10px;
+    margin: 0 auto;
+    border-radius: 8px;
+}
+
+#status.success {
+    background-color: rgb(211, 250, 153);
+    animation: status 4s ease forwards;
+}
+
+#status.error {
+    background-color: rgb(250, 129, 92);
+    color: white;
+    animation: status 4s ease forwards;
+}
+
+@keyframes status {
+0% {
+    opacity: 1;
+    pointer-events: all;
+}
+90% {
+    opacity: 1;
+    pointer-events: all;
+}
+100% {
+    opacity: 0;
+    pointer-events: none;
+}
+}
+
+.tabbed-nav a {
+    background-color: rgb(226, 226, 226);
+    text-decoration: none;
+    padding: 8px 20px;
+    margin: 2px 15px 2px 0;
+    border-radius: 20px;
+    border: 2px black;
+}
+
+.tabbed-nav a:hover {
+    background-color: rgb(68, 68, 68);
+    color: white;
+}
+
+.tab-content{
+    margin-top: 30px;
+}
+
+/* Hide all tab content by default */
+.tab-pane {
+    display: none;
+}
+
+/* Show active tab content */
+.tab-pane.active {
+    display: block;
+}

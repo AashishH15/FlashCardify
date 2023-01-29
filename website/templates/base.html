@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title> Flashy </title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="stylesheet" href="index.css">
+</head>
+
+<style>
+    *{font-family:"Segoe UI",sans-serif}
+
+    .whole {
+        margin: 50px 25% 50px 25%;
+    }
+
+    h1 {
+        font-size: 35px;
+        text-align: center;
+        margin: 50px 0 50px 0;
+    }
+
+    form {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        font-family: 'Montserrat';
+        font-style: normal;
+
+        color: #000000;
+    }
+
+    section {
+        height: 90%;
+        width: 100%;
+        background-color: alice-blue;
+        display: flex;
+        flex-direction: column; 
+        align-items: center;
+        justify-content: center;
+    }
+
+    .container {
+        width: 90%;
+        max-width: 500px;
+        margin: 0 auto;
+        padding: 20px;
+        box-shadow: 0px 0px 20px #565656;
+        background-color: white;
+        border-radius: 8px;
+        margin-bottom: 20px;
+    }
+
+    .form-group{
+        width: 100%;
+        margin-top: 20px;
+        font-size: 18px;
+    }
+
+    .form-group select { /* Number of flashcards*/
+        width: 75px;
+        height: 25px;
+        border: 1px solid rgba(128, 128, 128, 0.25);
+        border-radius: 3px;
+    }
+
+    .form-group textarea { /* Article TEXT */
+        width: 98%;
+        padding: 5px;
+        font-size: 16px;
+        border: 1px solid rgba(128, 128, 128, 0.4);
+        margin-top: 5px;
+    }
+
+    textarea {
+        resize: none; 
+    }
+
+    textarea::placeholder { 
+        color: rgba(85, 85, 85, 0.4);
+    }
+
+    .form-group input { /* Article LINK */
+        width: 98%;
+        padding: 5px;
+        font-size: 16px;
+        border: 1px solid rgba(128, 128, 128, 0.4);
+        margin-top: 5px;
+        margin-bottom: 10px;
+    }
+
+    input::placeholder { 
+        color: rgba(85, 85, 85, 0.4);
+    }
+
+    button[type="submit"] {
+        width: 100%;
+        border: none;
+        outline: none;
+        padding: 20px;
+        font-size: 24px;
+        border-radius: 8px;
+        color: rgb(0, 0, 0);
+        text-align: center;
+        cursor: pointer;
+        margin-top: 10px;
+        transition: .3s ease background-color;
+    }
+
+    button[type="submit"]:hover {
+        background-color: rgba(169, 250, 153, 0.5);   
+    }
+
+    button[type="submit"]:focus {
+        border: 2px solid rgb(0, 0, 0); 
+    }
+
+    #status {
+        width: 90%;
+        max-width: 500px;
+        text-align: center;
+        padding: 10px;
+        margin: 0 auto;
+        border-radius: 8px;
+    }
+
+    #status.success {
+        background-color: rgb(211, 250, 153);
+        animation: status 4s ease forwards;
+    }
+
+    #status.error {
+        background-color: rgb(250, 129, 92);
+        color: white;
+        animation: status 4s ease forwards;
+    }
+
+    @keyframes status {
+    0% {
+        opacity: 1;
+        pointer-events: all;
+    }
+    90% {
+        opacity: 1;
+        pointer-events: all;
+    }
+    100% {
+        opacity: 0;
+        pointer-events: none;
+    }
+    }
+
+    .tabbed-nav a {
+        background-color: rgb(226, 226, 226);
+        text-decoration: none;
+        padding: 8px 20px;
+        margin: 2px 15px 2px 0;
+        border-radius: 20px;
+        border: 2px black;
+    }
+
+    .tabbed-nav a:hover {
+        background-color: rgb(68, 68, 68);
+        color: white;
+    }
+
+    .tab-content{
+        margin-top: 30px;
+    }
+
+    /* Hide all tab content by default */
+    .tab-pane {
+        display: none;
+    }
+
+    /* Show active tab content */
+    .tab-pane.active {
+        display: block;
+    }
+</style>
+
+ <body>
+    <div class="whole">
+        <h1>Create a New Flashcard Set</h1>
+
+        <section>
+            <div class="container">
+                <div class="tabbed-nav">
+                    <div class="tabs">
+                        <a href="#tab1" class="tab active">Use a URL</a>
+                        <a href="#tab2" class="tab">Use text</a>
+                    </div>
+
+                    <div class="tab-content"> 
+                        <div id="tab1" class="tab-pane active"> <!-- Copy Link -->
+                            <form action="/data" method="POST"> <!-- Here -->
+                                <div class="form-group">
+                                    <label for="number-of-cards">Number of flashcards<br> </label> 
+                                    <select id="number-picker" name="number-picker">
+                                        <option value="5">5</option>
+                                        <option value="10">10</option>
+                                        <option value="15">15</option>
+                                        <option value="auto">Auto</option>
+                                    </select>
+                                </div>            
+                                <div class="form-group">
+                                    <label for="article-link"> Article Link <br></label>
+                                    <input type="text" id="article-link" name="article-link" placeholder="Paste link here" onfocus="this.placeholder=''">
+                                </div>
+            
+                                <button type="submit"> <b>Generate flashcards</b> </button>
+                            </form>
+                        </div>
+
+                        <div id="tab2" class="tab-pane"> <!-- Copy Text -->
+                            <form action="/data">
+                                <div class="form-group">
+                                    <label for="number-of-cards">Number of flashcards<br> </label>
+                                    <select id="number-picker" name="number-picker">
+                                        <option value="5">5</option>
+                                        <option value="10">10</option>
+                                        <option value="15">15</option>
+                                        <option value="auto">Auto</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="article-text"> Article Text </label>
+                                    <textarea name="article-text" id="article-text" cols="50" rows="10" placeholder="Paste text here" onfocus="this.placeholder=''"></textarea>
+                                </div>
+            
+                                <button type="submit"> <b>Generate flashcards</b> </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div> 
+            <div id="status" class="success"> Success! </div>
+        </section>
+
+        <footer>
+            <h1> Thanks for checking out our site!</h1>
+        </footer>
+      
+    </div>
+    <script>
+        // no clue what this does lmao
+
+window.addEventListener("DOMContentLoaded", function () {
+    // get the form elements defined in your form HTML above
+  
+    var form = document.getElementById("my-form");
+    // var button = document.getElementById("my-form-button");
+    var status = document.getElementById("status");
+  
+    // Success and Error functions for after the form is submitted
+  
+    function success() {
+      form.reset();
+      //status.classList.add("success");
+      status.innerHTML = "Thanks!";
+    }
+  
+    function error() {
+      //status.classList.add("error");
+      status.innerHTML = "Oops! There was a problem.";
+    }
+  
+    // handle the form submission event
+  
+    form.addEventListener("submit", function (ev) {
+      ev.preventDefault();
+      var data = new FormData(form);
+      ajax(form.method, form.action, data, success, error);
+    });
+  });
+  
+  // helper function for sending an AJAX request
+  
+  function ajax(method, url, data, success, error) {
+    var xhr = new XMLHttpRequest();
+    xhr.open(method, url);
+    xhr.setRequestHeader("Accept", "application/json");
+    xhr.onreadystatechange = function () {
+      if (xhr.readyState !== XMLHttpRequest.DONE) return;
+      if (xhr.status === 200) {
+        success(xhr.response, xhr.responseType);
+      } else {
+        error(xhr.status, xhr.response, xhr.responseType);
+      }
+    };
+    xhr.send(data);
+  }
+  
+  
+  // most important shit
+  var tabs = document.querySelectorAll('.tab');
+      for(var i = 0; i < tabs.length; i++) {
+          tabs[i].addEventListener('click', function(e) {
+              e.preventDefault();
+              var tabId = this.href.split('#')[1];
+              var tabPanes = document.querySelectorAll('.tab-pane');
+              for(var i = 0; i < tabPanes.length; i++) {
+                  tabPanes[i].classList.remove('active');
+              }
+              var tabPane = document.getElementById(tabId);
+              tabPane.classList.add('active');
+  
+              var tabs = document.querySelectorAll('.tab');
+              for(var i = 0; i < tabs.length; i++) {
+                  tabs[i].classList.remove('active');
+              }
+              this.classList.add('active');
+          });
+      }
+    </script> 
+</body>
+
+</html>
