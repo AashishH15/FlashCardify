@@ -13,7 +13,7 @@ bs4 <br>
 
 You can install them using pip:
 
-pip install numpy spacy newspaper3k csv wiktionaryparser beautifulsoup4
+<p>pip install numpy spacy newspaper3k csv wiktionaryparser beautifulsoup4<p>
 
 Also, make sure you have downloaded the "en_core_web_sm" model for spacy:
 
