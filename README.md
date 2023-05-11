@@ -4,7 +4,7 @@ FlashCardify is a Python-based project that creates flashcards for you by extrac
 Prerequisites
 Before running FlashCardify, make sure you have installed the following packages:
 
-numpy
+numpy <br>
 spacy
 newspaper
 csv
