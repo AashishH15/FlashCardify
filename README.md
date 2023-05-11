@@ -23,9 +23,9 @@ Usage
 To use FlashCardify, simply import the TextRank4Keyword class from the FlashCardify module, create an instance of the class, and call its Get_URLandCSV() method with the URL of the web page you want to extract keywords from, and a filename for the CSV file.
 
 `from FlashCardify import TextRank4Keyword
-url = 'https://en.wikipedia.org/wiki/Python_(programming_language)'
-filename = 'flashcards.csv'
-tr4w = TextRank4Keyword()
+url = 'https://en.wikipedia.org/wiki/Python_(programming_language)' <br>
+filename = 'flashcards.csv'<br>
+tr4w = TextRank4Keyword()<br>
 tr4w.Get_URLandCSV(url, filename)`
 
 You can also pass a text string to the analyze() method to extract keywords and their definitions from a text:
