@@ -5,11 +5,11 @@ Prerequisites
 Before running FlashCardify, make sure you have installed the following packages:
 
 numpy <br>
-spacy
-newspaper
-csv
-wiktionaryparser
-bs4
+spacy <br>
+newspaper <br>
+csv <br>
+wiktionaryparser <br>
+bs4 <br>
 
 You can install them using pip:
 
